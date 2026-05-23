@@ -3,6 +3,7 @@
 import { useForm, FieldValues, DefaultValues } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { AnyObjectSchema } from 'yup';
+import { notifier } from '@/lib/notifier';
 
 export const useFormCustom = <T extends FieldValues>(
   onSuccess: (data: T) => Promise<void>,
@@ -23,9 +24,12 @@ export const useFormCustom = <T extends FieldValues>(
   } = methods;
 
   const onSubmit = async (data: T) => {
-    onSuccess(data)
-      .then(() => reset(data))
-      .catch(() => reset(data));
+    try {
+      await onSuccess(data);
+      reset(data);
+    } catch (err) {
+      notifier.error(err instanceof Error ? err.message : 'Помилка. Спробуйте ще раз');
+    }
   };
 
   return {

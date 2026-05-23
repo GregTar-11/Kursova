@@ -35,6 +35,13 @@ export class AuthService {
     return { id: user.uid, ...userData };
   }
 
+  static async registerAdmin(email: string, password: string): Promise<AppUser> {
+    const { user } = await createUserWithEmailAndPassword(auth, email, password);
+    const userData = { email, role: 'admin' as const };
+    await setDoc(doc(db, COLLECTIONS.USERS, user.uid), userData);
+    return { id: user.uid, ...userData };
+  }
+
   static async logout(): Promise<void> {
     return firebaseSignOut(auth);
   }

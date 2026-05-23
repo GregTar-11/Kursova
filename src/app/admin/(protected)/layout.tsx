@@ -8,7 +8,7 @@ import { AuthService } from '@/services/auth.service';
 import { ROUTES } from '@/constant/routes';
 import { Button } from '@/components/ui/Button';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function AdminProtectedLayout({ children }: { children: React.ReactNode }) {
   const { user, loading } = useAuth();
   const router = useRouter();
 
@@ -26,7 +26,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     );
   }
 
-  if (!user || user.role !== 'admin') return null;
+  if (!user || user.role !== 'admin') {
+    return (
+      <div className="min-h-screen bg-c-bg flex items-center justify-center">
+        <p className="text-c-muted text-sm">Перенаправлення...</p>
+      </div>
+    );
+  }
 
   const handleLogout = async () => {
     await AuthService.logout();

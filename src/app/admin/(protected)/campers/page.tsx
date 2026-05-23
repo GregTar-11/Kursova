@@ -33,7 +33,6 @@ export default function AdminCampersPage() {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-8 items-start">
-      {/* List */}
       <div>
         <div className="flex items-center justify-between mb-6">
           <div>
@@ -59,14 +58,12 @@ export default function AdminCampersPage() {
                   selected?.id === camper.id ? 'border-c-accent' : 'border-c-border',
                 )}
               >
-                {/* Thumbnail */}
                 <div className="relative w-16 h-12 rounded overflow-hidden shrink-0 bg-c-border">
                   {camper.imageUrl && (
                     <Image src={camper.imageUrl} alt={camper.name} fill className="object-cover" />
                   )}
                 </div>
 
-                {/* Info */}
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-c-headline text-sm truncate">{camper.name}</p>
                   <p className="text-xs text-c-muted">
@@ -77,7 +74,6 @@ export default function AdminCampersPage() {
                   </p>
                 </div>
 
-                {/* Actions */}
                 <div className="flex gap-2 shrink-0">
                   <Button variant="outline" size="small" onClick={() => openEdit(camper)}>
                     Ред.
@@ -92,7 +88,6 @@ export default function AdminCampersPage() {
         )}
       </div>
 
-      {/* Form panel */}
       {showForm && (
         <div className="bg-c-white border border-c-border rounded-lg overflow-hidden sticky top-24">
           <div className="px-6 pt-5 pb-2 border-b border-c-border">

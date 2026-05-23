@@ -17,8 +17,8 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${inter.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased">
+    <html lang="ua" className={`${inter.variable} h-full`}>
+      <body className="flex flex-col antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>

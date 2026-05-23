@@ -1,6 +1,9 @@
 'use client';
 
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { useAuth } from '@/context/AuthContext';
 import { AuthService } from '@/services/auth.service';
 import { loginSchema, ILoginData } from '@/schemas';
 import { useFormCustom } from '@/hooks/useFormCustom';
@@ -11,7 +14,14 @@ import { InputPassword } from '@/components/ui/InputPassword';
 import { Button } from '@/components/ui/Button';
 
 export default function AdminLoginPage() {
+  const { user, loading } = useAuth();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!loading && user?.role === 'admin') {
+      router.replace(ROUTES.ADMIN);
+    }
+  }, [user, loading, router]);
 
   const { handleSubmit, methods, isSubmitting, isDirty } = useFormCustom<ILoginData>(
     async ({ email, password }) => {
@@ -21,6 +31,22 @@ export default function AdminLoginPage() {
     loginSchema,
     { email: '', password: '' },
   );
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-c-bg flex items-center justify-center">
+        <p className="text-c-muted text-sm">Завантаження...</p>
+      </div>
+    );
+  }
+
+  if (user?.role === 'admin') {
+    return (
+      <div className="min-h-screen bg-c-bg flex items-center justify-center">
+        <p className="text-c-muted text-sm">Перенаправлення...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-c-bg flex items-center justify-center px-4">
@@ -56,6 +82,13 @@ export default function AdminLoginPage() {
             </Button>
           </Form>
         </div>
+
+        <p className="text-center text-sm text-c-muted mt-4">
+          Немає акаунту?{' '}
+          <Link href={ROUTES.ADMIN_REGISTER} className="text-c-accent hover:underline">
+            Зареєструватись
+          </Link>
+        </p>
       </div>
     </div>
   );
