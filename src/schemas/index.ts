@@ -22,6 +22,25 @@ export const loginSchema = yup.object({
 
 export type ILoginData = yup.InferType<typeof loginSchema>;
 
+export const registerSchema = yup.object({
+  email: yup
+    .string()
+    .trim()
+    .email('Некоректний email')
+    .required('Введіть email'),
+  password: yup
+    .string()
+    .min(AUTH_CONFIG.PASSWORD.MIN, `Мінімум ${AUTH_CONFIG.PASSWORD.MIN} символів`)
+    .max(AUTH_CONFIG.PASSWORD.MAX, `Максимум ${AUTH_CONFIG.PASSWORD.MAX} символів`)
+    .required('Введіть пароль'),
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref('password')], 'Паролі не збігаються')
+    .required('Підтвердіть пароль'),
+});
+
+export type IRegisterData = yup.InferType<typeof registerSchema>;
+
 export const orderSchema = yup.object({
   clientName: yup
     .string()

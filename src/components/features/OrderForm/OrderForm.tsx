@@ -13,7 +13,7 @@ interface OrderFormProps {
 }
 
 export default function OrderForm({ camperId = '' }: OrderFormProps) {
-  const { handleSubmit, methods, isSubmitting } = useFormCustom<IOrderData>(
+  const { handleSubmit, methods, isSubmitting, isDirty } = useFormCustom<IOrderData>(
     async (data) => {
       await OrderService.create(data);
       notifier.success('Замовлення прийнято! Ми зв\'яжемося з вами найближчим часом.');
@@ -43,7 +43,7 @@ export default function OrderForm({ camperId = '' }: OrderFormProps) {
         type="submit"
         variant="primary"
         size="big"
-        disabled={isSubmitting}
+        disabled={!isDirty || isSubmitting}
         className="w-full"
       >
         {isSubmitting ? 'Відправлення...' : 'Замовити'}
