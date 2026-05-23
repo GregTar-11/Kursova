@@ -41,5 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
+# AI Assistant files
+CLAUDE.md
 todo.md
+AGENTS.md
