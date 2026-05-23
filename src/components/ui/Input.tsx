@@ -1,5 +1,6 @@
 'use client';
 
+import { FieldErrors } from 'react-hook-form';
 import { useFormContext } from 'react-hook-form';
 import { ErrorMessage } from './ErrorMessage';
 import { cn } from '@/helpers/cn';
@@ -12,13 +13,23 @@ interface InputProps {
   disabled?: boolean;
 }
 
+const getFieldError = (errors: FieldErrors, name: string) => {
+  const parts = name.split('.');
+  let current: unknown = errors;
+  for (const part of parts) {
+    if (current == null || typeof current !== 'object') return undefined;
+    current = (current as Record<string, unknown>)[part];
+  }
+  return current as { message?: string } | undefined;
+};
+
 export const Input = ({ label, type = 'text', name, placeholder, disabled }: InputProps) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
 
-  const fieldError = errors[name];
+  const fieldError = getFieldError(errors, name);
 
   return (
     <div className="text-[13px] leading-normal">
