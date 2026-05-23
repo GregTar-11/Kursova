@@ -167,3 +167,47 @@ _Последнее обновление: 2026-05-23. Сверяйся с эти
 - TypeScript: ошибок нет
 
 **Следующий шаг:** 2.5 — Сторінка каталогу (фільтри + сітка всіх кемперів)
+
+### 2026-05-23 — Шаг 2.5: Сторінка каталогу
+
+**Сделано:**
+- `src/app/(client)/catalog/page.tsx` — Server Component, SSR-запит `CamperService.getAll()`, metadata, шапка сторінки
+- `src/components/features/CatalogContent/CatalogContent.tsx` — Client Component:
+  - Фільтр статусу: таб-кнопки "Усі / Доступний / Заброньований"
+  - Фільтр ціни: два інпути "від / до" з перевіркою на цифри
+  - Кнопка "Скинути фільтри" (з'являється при активних фільтрах)
+  - Лічильник "Знайдено: N кемперів"
+  - Сітка адаптивна 1→2→3→4, empty state
+  - Фільтрація через useMemo на клієнті
+- TypeScript: ошибок нет
+
+**Следующий шаг:** 2.6 — Сторінка кемпера [id] (SSR + generateMetadata + OrderForm)
+
+### 2026-05-23 — Рефакторинг: хук useCatalogFilters
+
+**Сделано:**
+- `src/hooks/useCatalogFilters.ts` — окремий хук, експортує `CatalogFilters` інтерфейс + логіку: `filters`, `filtered`, `setStatus`, `setPrice`, `resetFilters`, `hasActiveFilters`
+- `CatalogContent.tsx` — очищений від логіки, тільки UI; використовує `useCatalogFilters`
+- TypeScript: ошибок нет
+
+**Следующий шаг:** 2.6 — Сторінка кемпера [id]
+
+### 2026-05-23 — Шаг 2.6: Сторінка кемпера [id]
+
+**Сделано:**
+- `src/app/(client)/catalog/[id]/page.tsx` — async Server Component
+  - `await params` (Next.js 16 — params це Promise)
+  - `generateMetadata` — динамічний title + description (перші 160 символів)
+  - `notFound()` якщо кемпер не знайдено
+  - Hero image (aspect 16/6, priority)
+  - Посилання "← Назад до каталогу"
+  - Бейдж статусу (зелений/сірий)
+  - Ціна з форматуванням uk-UA + ₴/доба
+  - Характеристики у трьох картках (двигун, місця, бак)
+  - Опис з `whitespace-pre-line`
+  - `OrderForm` з `camperId` у sticky-блоці праворуч
+  - Desktop: 2 колонки (деталі + форма), mobile: стек
+- TypeScript: ошибок нет
+
+**Фаза 2 ЗАВЕРШЕНА ✅**
+**Следующий шаг:** Фаза 3 — Адмін-панель: login + guard layout
