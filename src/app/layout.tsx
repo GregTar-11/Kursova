@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Ramblers — Аренда домов на колёсах',
-  description: 'Откройте свободу путешествий с Ramblers.',
+  title: 'Ramblers — Оренда будинків на колесах',
+  description: 'Відкрийте свободу подорожей з Ramblers.',
 };
 
 export default function RootLayout({

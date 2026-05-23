@@ -36,14 +36,14 @@ export const ORDER_STATUS = {
 } as const;
 
 export const ORDER_STATUS_LABELS: Record<string, string> = {
-  new: 'Новый',
-  'in-progress': 'В обработке',
-  completed: 'Завершён',
+  new: 'Новий',
+  'in-progress': 'В обробці',
+  completed: 'Завершений',
 };
 
 export const CAMPER_STATUS_LABELS: Record<string, string> = {
-  available: 'Доступен',
-  booked: 'Забронирован',
+  available: 'Доступний',
+  booked: 'Заброньований',
 };
 
 export const TOP_CAMPERS_COUNT = 4;

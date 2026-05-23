@@ -11,13 +11,13 @@ export const loginSchema = yup.object({
   email: yup
     .string()
     .trim()
-    .email('Некорректный email')
-    .required('Введите email'),
+    .email('Некоректний email')
+    .required('Введіть email'),
   password: yup
     .string()
-    .min(AUTH_CONFIG.PASSWORD.MIN, `Минимум ${AUTH_CONFIG.PASSWORD.MIN} символов`)
-    .max(AUTH_CONFIG.PASSWORD.MAX, `Максимум ${AUTH_CONFIG.PASSWORD.MAX} символов`)
-    .required('Введите пароль'),
+    .min(AUTH_CONFIG.PASSWORD.MIN, `Мінімум ${AUTH_CONFIG.PASSWORD.MIN} символів`)
+    .max(AUTH_CONFIG.PASSWORD.MAX, `Максимум ${AUTH_CONFIG.PASSWORD.MAX} символів`)
+    .required('Введіть пароль'),
 });
 
 export type ILoginData = yup.InferType<typeof loginSchema>;
@@ -26,13 +26,13 @@ export const orderSchema = yup.object({
   clientName: yup
     .string()
     .trim()
-    .min(STRING_CONFIG.MIN, `Минимум ${STRING_CONFIG.MIN} символа`)
-    .max(STRING_CONFIG.MAX, `Максимум ${STRING_CONFIG.MAX} символов`)
-    .required('Введите ваше имя'),
+    .min(STRING_CONFIG.MIN, `Мінімум ${STRING_CONFIG.MIN} символи`)
+    .max(STRING_CONFIG.MAX, `Максимум ${STRING_CONFIG.MAX} символів`)
+    .required("Введіть ваше ім'я"),
   clientPhone: yup
     .string()
-    .required('Введите номер телефона')
-    .matches(PHONE_REGEX, 'Формат: +7XXXXXXXXXX'),
+    .required('Введіть номер телефону')
+    .matches(PHONE_REGEX, 'Формат: +380XXXXXXXXX'),
   camperId: yup.string().default(''),
 });
 
@@ -42,44 +42,44 @@ export const camperSchema = yup.object({
   name: yup
     .string()
     .trim()
-    .min(STRING_CONFIG.MIN, `Минимум ${STRING_CONFIG.MIN} символа`)
-    .max(STRING_CONFIG.MAX, `Максимум ${STRING_CONFIG.MAX} символов`)
-    .required('Введите название'),
+    .min(STRING_CONFIG.MIN, `Мінімум ${STRING_CONFIG.MIN} символи`)
+    .max(STRING_CONFIG.MAX, `Максимум ${STRING_CONFIG.MAX} символів`)
+    .required('Введіть назву'),
   price: yup
     .number()
-    .typeError('Введите число')
-    .min(PRICE_CONFIG.MIN, 'Цена должна быть больше 0')
+    .typeError('Введіть число')
+    .min(PRICE_CONFIG.MIN, 'Ціна має бути більше 0')
     .max(PRICE_CONFIG.MAX, `Максимум ${PRICE_CONFIG.MAX}`)
-    .required('Введите цену'),
+    .required('Введіть ціну'),
   description: yup
     .string()
     .trim()
-    .min(STRING_CONFIG.MIN_DESCRIPTION, `Минимум ${STRING_CONFIG.MIN_DESCRIPTION} символов`)
-    .max(STRING_CONFIG.MAX_DESCRIPTION, `Максимум ${STRING_CONFIG.MAX_DESCRIPTION} символов`)
-    .required('Введите описание'),
+    .min(STRING_CONFIG.MIN_DESCRIPTION, `Мінімум ${STRING_CONFIG.MIN_DESCRIPTION} символів`)
+    .max(STRING_CONFIG.MAX_DESCRIPTION, `Максимум ${STRING_CONFIG.MAX_DESCRIPTION} символів`)
+    .required('Введіть опис'),
   imageUrl: yup
     .string()
-    .url('Некорректный URL изображения')
-    .required('Введите URL изображения'),
+    .url('Некоректний URL зображення')
+    .required('Введіть URL зображення'),
   status: yup
     .string()
-    .oneOf(['available', 'booked'], 'Выберите статус')
-    .required('Выберите статус'),
+    .oneOf(['available', 'booked'], 'Виберіть статус')
+    .required('Виберіть статус'),
   features: yup.object({
-    engine: yup.string().trim().required('Введите тип двигателя'),
+    engine: yup.string().trim().required('Введіть тип двигуна'),
     beds: yup
       .number()
-      .typeError('Введите число')
-      .integer('Только целое число')
-      .min(CAMPER_FEATURES_CONFIG.BEDS.MIN, `Минимум ${CAMPER_FEATURES_CONFIG.BEDS.MIN}`)
+      .typeError('Введіть число')
+      .integer('Тільки ціле число')
+      .min(CAMPER_FEATURES_CONFIG.BEDS.MIN, `Мінімум ${CAMPER_FEATURES_CONFIG.BEDS.MIN}`)
       .max(CAMPER_FEATURES_CONFIG.BEDS.MAX, `Максимум ${CAMPER_FEATURES_CONFIG.BEDS.MAX}`)
-      .required('Введите количество мест'),
+      .required('Введіть кількість місць'),
     tankVolume: yup
       .number()
-      .typeError('Введите число')
-      .min(CAMPER_FEATURES_CONFIG.TANK.MIN, `Минимум ${CAMPER_FEATURES_CONFIG.TANK.MIN} л`)
+      .typeError('Введіть число')
+      .min(CAMPER_FEATURES_CONFIG.TANK.MIN, `Мінімум ${CAMPER_FEATURES_CONFIG.TANK.MIN} л`)
       .max(CAMPER_FEATURES_CONFIG.TANK.MAX, `Максимум ${CAMPER_FEATURES_CONFIG.TANK.MAX} л`)
-      .required('Введите объём бака'),
+      .required("Введіть об'єм баку"),
   }),
 });
 

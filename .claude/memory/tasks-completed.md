@@ -127,3 +127,43 @@ _Последнее обновление: 2026-05-23. Сверяйся с эти
 - TypeScript: ошибок нет
 
 **Следующий шаг:** 2.3 — `OrderForm` компонент, затем 2.4 — полная главная страница
+
+### 2026-05-23 — Глобальный перевод UI на украинский язык
+
+**Изменено:**
+- `src/app/layout.tsx` — metadata title/description → uk
+- `src/components/features/Header/Header.tsx` — "Головна", "Каталог"
+- `src/components/features/Footer/Footer.tsx` — "Усі права захищені", ссылки → uk
+- `src/constant/regular.ts` — CAMPER_STATUS_LABELS и ORDER_STATUS_LABELS → uk
+- `src/schemas/index.ts` — все validation messages → uk, телефон формат +380XXXXXXXXX
+- `src/helpers/formatDate.ts` — локаль ru-RU → uk-UA
+- `src/components/features/CamperCard/CamperCard.tsx` — "ліжка", "л бак", "Детальніше →", ₽→₴, "доба", uk-UA, метки берутся из CAMPER_STATUS_LABELS
+
+**Правило:** весь UI — украинский (₴, uk-UA). Общение с разработчиком — русский.
+
+**Следующий шаг:** 2.3 — OrderForm компонент
+
+### 2026-05-23 — Шаг 2.3: OrderForm
+
+**Сделано:**
+- `src/components/features/OrderForm/OrderForm.tsx` — Client Component
+  - Принимает `camperId?: string` (пустая строка = быстрый заказ без конкретного кемпера)
+  - `useFormCustom` + `orderSchema` (валидация: ім'я, телефон)
+  - Скрытый input для camperId
+  - При успехе → `notifier.success` с украинским текстом
+  - Кнопка: "Замовити" / "Відправлення..." во время отправки
+- TypeScript: ошибок нет
+
+**Следующий шаг:** 2.4 — Полная главная страница (Hero + TopCampers + OrderForm)
+
+### 2026-05-23 — Шаг 2.4: Головна сторінка (повна реалізація)
+
+**Сделано:**
+- `src/app/(client)/page.tsx` — async Server Component, три секції:
+  1. **Hero** — `bg-c-secondary`, заголовок "Мандруй у своєму темпі", підзаголовок, кнопка → каталог
+  2. **Топ пропозиції** — SSR через `CamperService.getTopAvailable()`, сітка 1→2→3→4 колонки, кнопка "Весь каталог", empty state якщо немає кемперів
+  3. **Швидке замовлення** — `OrderForm` без camperId (загальна заявка)
+- Помилки Firebase обробляються через `.catch(() => [])` — сторінка не падає
+- TypeScript: ошибок нет
+
+**Следующий шаг:** 2.5 — Сторінка каталогу (фільтри + сітка всіх кемперів)

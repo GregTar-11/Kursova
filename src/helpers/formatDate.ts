@@ -1,6 +1,6 @@
 export const formatDate = (timestamp: number): string => {
   if (!timestamp) return '—';
-  return new Intl.DateTimeFormat('ru-RU', {
+  return new Intl.DateTimeFormat('uk-UA', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
@@ -9,7 +9,7 @@ export const formatDate = (timestamp: number): string => {
 
 export const formatDateTime = (timestamp: number): string => {
   if (!timestamp) return '—';
-  return new Intl.DateTimeFormat('ru-RU', {
+  return new Intl.DateTimeFormat('uk-UA', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',

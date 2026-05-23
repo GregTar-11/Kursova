@@ -10,12 +10,12 @@ export default function Footer() {
         </Link>
 
         <p className="text-sm text-c-muted text-center">
-          © {new Date().getFullYear()} Ramblers. Все права защищены.
+          © {new Date().getFullYear()} Ramblers. Усі права захищені.
         </p>
 
         <nav className="flex items-center gap-4 text-sm text-c-muted">
           <Link href={ROUTES.HOME} className="hover:text-c-accent transition-colors">
-            Главная
+            Головна
           </Link>
           <Link href={ROUTES.CATALOG} className="hover:text-c-accent transition-colors">
             Каталог

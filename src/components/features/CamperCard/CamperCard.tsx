@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Camper } from '@/types';
 import { ROUTES } from '@/constant/routes';
+import { CAMPER_STATUS_LABELS } from '@/constant/regular';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/helpers/cn';
 
@@ -9,17 +10,16 @@ interface CamperCardProps {
   camper: Camper;
 }
 
-const STATUS_MAP = {
-  available: { label: 'Доступен', className: 'bg-c-secondary text-c-white' },
-  booked: { label: 'Забронирован', className: 'bg-c-border text-c-muted' },
-} as const;
+const STATUS_STYLE: Record<string, string> = {
+  available: 'bg-c-secondary text-c-white',
+  booked: 'bg-c-border text-c-muted',
+};
 
 const formatPrice = (price: number) =>
-  new Intl.NumberFormat('ru-RU').format(price);
+  new Intl.NumberFormat('uk-UA').format(price);
 
 export default function CamperCard({ camper }: CamperCardProps) {
   const { id, name, price, features, imageUrl, status } = camper;
-  const statusInfo = STATUS_MAP[status];
 
   return (
     <article className="flex flex-col bg-c-white border border-c-border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
@@ -34,10 +34,10 @@ export default function CamperCard({ camper }: CamperCardProps) {
         <span
           className={cn(
             'absolute top-3 left-3 px-2 py-0.5 rounded-sm text-xs font-medium',
-            statusInfo.className,
+            STATUS_STYLE[status],
           )}
         >
-          {statusInfo.label}
+          {CAMPER_STATUS_LABELS[status]}
         </span>
       </div>
 
@@ -46,18 +46,18 @@ export default function CamperCard({ camper }: CamperCardProps) {
 
         <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-c-muted">
           <li>{features.engine}</li>
-          <li className="before:content-['·'] before:mr-3">{features.beds} кровати</li>
+          <li className="before:content-['·'] before:mr-3">{features.beds} ліжка</li>
           <li className="before:content-['·'] before:mr-3">{features.tankVolume} л бак</li>
         </ul>
 
         <p className="text-c-headline font-semibold mt-auto">
           {formatPrice(price)}{' '}
-          <span className="text-sm font-normal text-c-muted">₽ / сутки</span>
+          <span className="text-sm font-normal text-c-muted">₴ / доба</span>
         </p>
 
         <Link href={ROUTES.CAMPER(id)} className="w-full">
           <Button variant="outline" size="medium" className="w-full">
-            Подробнее →
+            Детальніше →
           </Button>
         </Link>
       </div>

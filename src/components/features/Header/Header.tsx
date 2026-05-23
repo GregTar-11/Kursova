@@ -6,7 +6,7 @@ import { ROUTES } from '@/constant/routes';
 import { cn } from '@/helpers/cn';
 
 const NAV_LINKS = [
-  { label: 'Главная', href: ROUTES.HOME },
+  { label: 'Головна', href: ROUTES.HOME },
   { label: 'Каталог', href: ROUTES.CATALOG },
 ] as const;
 
