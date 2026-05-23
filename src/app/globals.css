@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Ramblers brand */
+  --color-c-accent: #E8873A;
+  --color-c-accent-dark: #C96B20;
+  --color-c-accent-light: #F5A96B;
+  --color-c-secondary: #2D5A27;
+  --color-c-secondary-dark: #1E3F1A;
+
+  /* Neutrals */
+  --color-c-bg: #FAFAF8;
+  --color-c-white: #FFFFFF;
+  --color-c-headline: #1A1A1A;
+  --color-c-muted: #6B7280;
+  --color-c-base: #9CA3AF;
+  --color-c-border: #E5E1D8;
+
+  /* Status */
+  --color-c-error: #EF4444;
+  --color-c-success: #22C55E;
+  --color-c-warning: #F59E0B;
+  --color-c-danger: #EF4444;
+
+  /* Font */
+  --font-sans: var(--font-inter);
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.25rem;
+}
+
+:root {
+  --background: #FAFAF8;
+  --foreground: #1A1A1A;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}

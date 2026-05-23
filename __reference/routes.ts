@@ -1,0 +1,16 @@
+export const ROUTES = {
+  MAIN: '/',
+  LOGIN: '/login/',
+  SIGNUP: '/signup/',
+  BOARDS: '/boards/',
+  BOARD: '/boards/board/',
+  BOARDS_CREATE: '/boards/create/',
+  BOARD_EDIT: '/boards/board/edit/',
+  TASK_CREATE: '/boards/board/task/create/',
+  TASK_INFO: '/boards/board/task/info/',
+  TASK_ACTIVITY_LOG: '/boards/board/task/info/activity-log/',
+  TASK_EDIT: '/boards/board/task/edit/',
+  REPORTERS: '/reports/',
+  PORTFOLIO: '/portfolio',
+  ERROR: '/error',
+} as const;
