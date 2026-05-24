@@ -1,20 +1,23 @@
 'use client';
 
 import { Order } from '@/types';
-import { ORDER_STATUS, ORDER_STATUS_LABELS } from '@/constant/regular';
+import { ORDER_STATUS_LABELS } from '@/constant/regular';
 import { OrderService } from '@/services/order.service';
 import { notifier } from '@/lib/notifier';
 import { formatDate } from '@/helpers/formatDate';
 import { useOrders } from '@/hooks/useOrders';
 import { cn } from '@/helpers/cn';
 
-const STATUS_OPTIONS = Object.entries(ORDER_STATUS_LABELS) as [Order['status'], string][];
+const STATUS_OPTIONS = Object.entries(ORDER_STATUS_LABELS);
 
 const STATUS_BADGE: Record<Order['status'], string> = {
   new: 'bg-c-accent/10 text-c-accent',
   'in-progress': 'bg-c-warning/10 text-c-warning',
   completed: 'bg-c-success/10 text-c-success',
 };
+
+const isOrderStatus = (value: string): value is Order['status'] =>
+  value === 'new' || value === 'in-progress' || value === 'completed';
 
 const handleStatusChange = async (id: string, status: Order['status']) => {
   await OrderService.updateStatus(id, status)
@@ -78,7 +81,9 @@ export default function OrdersTable() {
                   </span>
                   <select
                     defaultValue={order.status}
-                    onChange={(e) => handleStatusChange(order.id, e.target.value as Order['status'])}
+                    onChange={(e) => {
+                      if (isOrderStatus(e.target.value)) handleStatusChange(order.id, e.target.value);
+                    }}
                     className="text-xs border border-c-border rounded px-2 py-1 text-c-headline outline-none focus:border-c-accent transition-colors cursor-pointer bg-c-white"
                   >
                     {STATUS_OPTIONS.map(([value, label]) => (

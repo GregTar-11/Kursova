@@ -5,6 +5,7 @@ import { ROUTES } from '@/constant/routes';
 import { CAMPER_STATUS_LABELS } from '@/constant/regular';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/helpers/cn';
+import { formatPrice } from '@/helpers/formatPrice';
 
 interface CamperCardProps {
   camper: Camper;
@@ -14,9 +15,6 @@ const STATUS_STYLE: Record<string, string> = {
   available: 'bg-c-secondary text-c-white',
   booked: 'bg-c-border text-c-muted',
 };
-
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat('uk-UA').format(price);
 
 export default function CamperCard({ camper }: CamperCardProps) {
   const { id, name, price, features, imageUrl, status } = camper;

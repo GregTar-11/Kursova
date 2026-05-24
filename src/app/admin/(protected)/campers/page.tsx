@@ -10,9 +10,7 @@ import { useCampers } from "@/hooks/useCampers";
 import CamperForm from "@/components/features/CamperForm/CamperForm";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/helpers/cn";
-
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat("uk-UA").format(price);
+import { formatPrice } from "@/helpers/formatPrice";
 
 export default function AdminCampersPage() {
   const { campers, loading, refresh } = useCampers();

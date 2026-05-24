@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/Textarea";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/helpers/cn";
 import { InputFile } from "@/components/ui/InputFile";
+import { buildDefaults } from "./buildDefaults";
 
 interface CamperFormProps {
   camper?: Camper;
@@ -20,10 +21,7 @@ interface CamperFormProps {
   onCancel?: () => void;
 }
 
-const STATUS_OPTIONS = Object.entries(CAMPER_STATUS_LABELS) as [
-  string,
-  string,
-][];
+const STATUS_OPTIONS = Object.entries(CAMPER_STATUS_LABELS);
 
 function StatusSelect() {
   const {
@@ -61,19 +59,6 @@ function StatusSelect() {
     </div>
   );
 }
-
-const buildDefaults = (camper?: Camper): ICamperData => ({
-  name: camper?.name ?? "",
-  price: camper?.price ?? 0,
-  description: camper?.description ?? "",
-  imageUrl: camper?.imageUrl ?? "",
-  status: camper?.status ?? "available",
-  features: {
-    engine: camper?.features.engine ?? "",
-    beds: camper?.features.beds ?? 1,
-    tankVolume: camper?.features.tankVolume ?? 50,
-  },
-});
 
 export default function CamperForm({
   camper,
