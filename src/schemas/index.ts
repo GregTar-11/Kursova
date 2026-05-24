@@ -68,7 +68,11 @@ export const camperSchema = yup.object({
     .min(STRING_CONFIG.MIN_DESCRIPTION, `Мінімум ${STRING_CONFIG.MIN_DESCRIPTION} символів`)
     .max(STRING_CONFIG.MAX_DESCRIPTION, `Максимум ${STRING_CONFIG.MAX_DESCRIPTION} символів`)
     .required('Введіть опис'),
-  imageUrl: yup.string().url('Некоректний URL зображення').required('Введіть URL зображення'),
+  images: yup
+    .array()
+    .of(yup.string().url('Некоректний URL зображення').required())
+    .min(1, 'Додайте хоча б одне фото')
+    .required('Додайте хоча б одне фото'),
   status: yup
     .string()
     .oneOf(['available', 'booked'], 'Виберіть статус')

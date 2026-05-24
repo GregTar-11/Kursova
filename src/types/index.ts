@@ -10,7 +10,7 @@ export interface Camper {
   price: number;
   description: string;
   features: CamperFeatures;
-  imageUrl: string;
+  images: string[];
   status: 'available' | 'booked';
 }
 

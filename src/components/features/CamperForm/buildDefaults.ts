@@ -5,7 +5,7 @@ export const buildDefaults = (camper?: Camper): ICamperData => ({
   name: camper?.name ?? '',
   price: camper?.price ?? 0,
   description: camper?.description ?? '',
-  imageUrl: camper?.imageUrl ?? '',
+  images: camper?.images ?? [],
   status: camper?.status ?? 'available',
   features: {
     engine: camper?.features?.engine ?? '',

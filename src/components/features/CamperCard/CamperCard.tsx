@@ -17,13 +17,14 @@ const STATUS_STYLE: Record<string, string> = {
 };
 
 export default function CamperCard({ camper }: CamperCardProps) {
-  const { id, name, price, features, imageUrl, status } = camper;
+  const { id, name, price, features, images, status } = camper;
+  const mainImage = images?.[0] ?? '/placeholder-camper.jpg';
 
   return (
     <article className="bg-c-white border-c-border flex flex-col overflow-hidden rounded-lg border transition-shadow hover:shadow-md">
       <div className="relative aspect-[4/3] w-full">
         <Image
-          src={imageUrl || '/placeholder-camper.jpg'}
+          src={mainImage}
           alt={name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"

@@ -43,7 +43,10 @@ export default function CamperForm({ camper, onSuccess, onCancel }: CamperFormPr
       <Input name="name" label="Назва кемпера" placeholder="Mercedes Sprinter 4x4" />
       <InputFile
         variant="dropzone"
-        onUploadSuccess={(url) => methods.setValue('imageUrl', url?.[0], { shouldDirty: true })}
+        multiple
+        initialPreviews={camper?.images}
+        onUploadSuccess={(urls) => methods.setValue('images', urls, { shouldDirty: true })}
+        error={methods.formState.errors.images?.message as string | undefined}
       />
       <Input name="price" label="Ціна (₴/доба)" type="number" placeholder="2000" />
       <Textarea

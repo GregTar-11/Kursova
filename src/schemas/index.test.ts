@@ -116,7 +116,7 @@ describe('camperSchema', () => {
     name: 'Mercedes Sprinter',
     price: 2000,
     description: 'Просторий кемпер для сімейного відпочинку',
-    imageUrl: 'https://example.com/camper.jpg',
+    images: ['https://example.com/camper.jpg'],
     status: 'available',
     features: { engine: '2.2L дизель', beds: 4, tankVolume: 80 },
   };
@@ -125,15 +125,30 @@ describe('camperSchema', () => {
     await expect(camperSchema.validate(valid)).resolves.toBeTruthy();
   });
 
-  it('відхиляє ціну 0', async () => {
-    await expect(camperSchema.validate({ ...valid, price: 0 })).rejects.toThrow(
-      'Ціна має бути більше 0',
+  it('приймає кілька фото', async () => {
+    await expect(
+      camperSchema.validate({
+        ...valid,
+        images: ['https://example.com/a.jpg', 'https://example.com/b.jpg'],
+      }),
+    ).resolves.toBeTruthy();
+  });
+
+  it('відхиляє порожній масив фото', async () => {
+    await expect(camperSchema.validate({ ...valid, images: [] })).rejects.toThrow(
+      'Додайте хоча б одне фото',
     );
   });
 
   it('відхиляє некоректний URL зображення', async () => {
-    await expect(camperSchema.validate({ ...valid, imageUrl: 'not-url' })).rejects.toThrow(
+    await expect(camperSchema.validate({ ...valid, images: ['not-url'] })).rejects.toThrow(
       'Некоректний URL зображення',
+    );
+  });
+
+  it('відхиляє ціну 0', async () => {
+    await expect(camperSchema.validate({ ...valid, price: 0 })).rejects.toThrow(
+      'Ціна має бути більше 0',
     );
   });
 

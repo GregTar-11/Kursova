@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { CamperService } from '@/services/camper.service';
@@ -7,6 +6,7 @@ import { CAMPER_STATUS_LABELS } from '@/constant/regular';
 import { ROUTES } from '@/constant/routes';
 import { cn } from '@/helpers/cn';
 import OrderForm from '@/components/features/OrderForm/OrderForm';
+import { PhotoGallery } from '@/components/features/PhotoGallery/PhotoGallery';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -30,21 +30,11 @@ export default async function CamperPage({ params }: PageProps) {
 
   if (!camper) notFound();
 
-  const { name, price, description, features, imageUrl, status } = camper;
+  const { name, price, description, features, images, status } = camper;
 
   return (
     <>
-      {/* Hero image */}
-      <div className="bg-c-border relative aspect-[16/6] w-full">
-        <Image
-          src={imageUrl || '/placeholder-camper.jpg'}
-          alt={name}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
+      <PhotoGallery images={images ?? []} alt={name} />
 
       <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
         {/* Back link */}
