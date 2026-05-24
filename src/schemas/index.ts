@@ -78,8 +78,8 @@ export const camperSchema = yup.object({
     .required('Введіть опис'),
   imageUrl: yup
     .string()
-    .url('Некоректний URL зображення'),
-    // .required('Введіть URL зображення'),
+    .url('Некоректний URL зображення')
+    .required('Введіть URL зображення'),
   status: yup
     .string()
     .oneOf(['available', 'booked'], 'Виберіть статус')

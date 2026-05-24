@@ -47,3 +47,14 @@ export const CAMPER_STATUS_LABELS: Record<string, string> = {
 };
 
 export const TOP_CAMPERS_COUNT = 4;
+
+export const FILE_CONFIG = {
+  MAX_SIZE_BYTES: 2 * 1024 * 1024,
+  ALLOWED_FORMATS: ['image/jpeg', 'image/png', 'image/webp'],
+  ALLOWED_DOC_FORMATS: [
+    'application/pdf',
+    'application/msword',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'text/plain',
+  ],
+} as const;
