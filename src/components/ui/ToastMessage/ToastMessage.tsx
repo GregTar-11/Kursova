@@ -2,6 +2,10 @@ import { Toast, toast } from 'react-hot-toast';
 import { ReactNode } from 'react';
 import { cn } from '@/helpers/cn';
 import { Button } from '../Button';
+import CheckIcon from '@/assets/svg/bx_bx-check.svg';
+import ErrorIcon from '@/assets/svg/bx_bx-error.svg';
+import WarningIcon from '@/assets/svg/bx_bx-block.svg';
+import CloseIcon from '@/assets/svg/mdi_close.svg';
 
 export enum ToastType {
   success,
@@ -15,39 +19,10 @@ interface ToastMessageProps {
   type: ToastType;
 }
 
-const CheckIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-    <polyline points="20 6 9 17 4 12" />
-  </svg>
-);
-
-const ErrorIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-    <circle cx="12" cy="12" r="10" />
-    <line x1="12" y1="8" x2="12" y2="12" />
-    <line x1="12" y1="16" x2="12.01" y2="16" />
-  </svg>
-);
-
-const WarningIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
-    <line x1="12" y1="9" x2="12" y2="13" />
-    <line x1="12" y1="17" x2="12.01" y2="17" />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
-  </svg>
-);
-
 const ICONS: Record<ToastType, ReactNode> = {
-  [ToastType.success]: <CheckIcon />,
-  [ToastType.warning]: <WarningIcon />,
-  [ToastType.error]: <ErrorIcon />,
+  [ToastType.success]: <CheckIcon width={20} height={20} className="shrink-0" />,
+  [ToastType.warning]: <WarningIcon width={20} height={20} className="shrink-0" />,
+  [ToastType.error]: <ErrorIcon width={20} height={20} className="shrink-0" />,
 };
 
 const TYPE_STYLES: Record<ToastType, string> = {
@@ -76,7 +51,7 @@ export const ToastMessage = ({ t, message, type }: ToastMessageProps) => {
       <div className="grow leading-normal font-medium">{message}</div>
 
       <Button variant="ghost" onClick={handleDismiss} className="h-auto p-0 shrink-0">
-        <CloseIcon />
+        <CloseIcon width={16} height={16} />
       </Button>
     </div>
   );
