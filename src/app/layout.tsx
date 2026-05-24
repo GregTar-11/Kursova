@@ -13,9 +13,7 @@ export const metadata: Metadata = {
   description: 'Відкрийте свободу подорожей з Ramblers.',
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ua" className={`${inter.variable} h-full`}>
       <body className="flex flex-col antialiased">

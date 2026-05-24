@@ -14,7 +14,12 @@ interface OrderStatusBadgeProps {
 
 export default function OrderStatusBadge({ status }: OrderStatusBadgeProps) {
   return (
-    <span className={cn('px-2 py-0.5 rounded-sm text-xs font-medium whitespace-nowrap', STATUS_BADGE[status])}>
+    <span
+      className={cn(
+        'rounded-sm px-2 py-0.5 text-xs font-medium whitespace-nowrap',
+        STATUS_BADGE[status],
+      )}
+    >
       {ORDER_STATUS_LABELS[status]}
     </span>
   );

@@ -6,5 +6,5 @@ interface ErrorMessageProps {
 }
 
 export const ErrorMessage = ({ children, className }: ErrorMessageProps) => (
-  <p className={cn('absolute text-c-error text-[12px]', className)}>{children}</p>
+  <p className={cn('text-c-error absolute text-[12px]', className)}>{children}</p>
 );

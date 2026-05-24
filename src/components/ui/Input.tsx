@@ -52,18 +52,16 @@ export const Input = ({ label, type = 'text', name, placeholder, disabled }: Inp
           {...register(name)}
           className={cn(
             'relative h-9 w-full rounded border px-3 py-2 transition-all outline-none',
-            'placeholder:text-[13px] placeholder:text-c-base',
+            'placeholder:text-c-base placeholder:text-[13px]',
             'disabled:cursor-not-allowed disabled:opacity-60',
             fieldError
-              ? 'border-c-error text-c-error focus:ring-1 focus:ring-c-error'
+              ? 'border-c-error text-c-error focus:ring-c-error focus:ring-1'
               : 'border-c-border text-c-headline focus:border-c-accent',
           )}
         />
 
         {fieldError && (
-          <ErrorMessage className="top-10">
-            {fieldError.message as string}
-          </ErrorMessage>
+          <ErrorMessage className="top-10">{fieldError.message as string}</ErrorMessage>
         )}
       </div>
     </div>

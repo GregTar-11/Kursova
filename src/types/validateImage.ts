@@ -12,9 +12,7 @@ export const validateFile = async (file: File | undefined): Promise<void> => {
 
   const isImage = file.type.startsWith('image/');
   if (isImage) {
-    if (
-      !(FILE_CONFIG.ALLOWED_FORMATS as readonly string[]).includes(file.type)
-    ) {
+    if (!(FILE_CONFIG.ALLOWED_FORMATS as readonly string[]).includes(file.type)) {
       throw new Error('Формат фотографии не валидный');
     }
 
@@ -38,10 +36,10 @@ export const validateFile = async (file: File | undefined): Promise<void> => {
 
         throw new Error('validation.IMAGE_INVALID');
       });
-  }else{
+  } else {
     if (!(FILE_CONFIG.ALLOWED_DOC_FORMATS as readonly string[]).includes(file.type)) {
       throw new Error('DOCUMENT_FORMAT');
     }
-    return
+    return;
   }
 };

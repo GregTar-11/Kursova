@@ -38,27 +38,18 @@ export default function AdminRegisterPage() {
   if (user?.role === 'admin') return <PageLoader message="Перенаправлення..." />;
 
   return (
-    <div className="h-screen bg-c-bg flex items-center justify-center px-4">
+    <div className="bg-c-bg flex h-screen items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-c-headline mb-1">Ramblers</h1>
-          <p className="text-sm text-c-muted">Реєстрація адміністратора</p>
+        <div className="mb-8 text-center">
+          <h1 className="text-c-headline mb-1 text-2xl font-bold">Ramblers</h1>
+          <p className="text-c-muted text-sm">Реєстрація адміністратора</p>
         </div>
 
-        <div className="bg-c-white border border-c-border rounded-lg overflow-hidden">
+        <div className="bg-c-white border-c-border overflow-hidden rounded-lg border">
           <Form methods={methods} onSubmit={handleSubmit} variant="full">
-            <Input
-              name="email"
-              label="Email"
-              type="email"
-              placeholder="admin@ramblers.ua"
-            />
+            <Input name="email" label="Email" type="email" placeholder="admin@ramblers.ua" />
 
-            <InputPassword
-              name="password"
-              label="Пароль"
-              placeholder="••••••••"
-            />
+            <InputPassword name="password" label="Пароль" placeholder="••••••••" />
 
             <InputPassword
               name="confirmPassword"
@@ -78,7 +69,7 @@ export default function AdminRegisterPage() {
           </Form>
         </div>
 
-        <p className="text-center text-sm text-c-muted mt-4">
+        <p className="text-c-muted mt-4 text-center text-sm">
           Вже є акаунт?{' '}
           <Link href={ROUTES.ADMIN_LOGIN} className="text-c-accent hover:underline">
             Увійти

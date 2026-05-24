@@ -12,9 +12,9 @@ export default async function CatalogPage() {
 
   return (
     <>
-      <div className="bg-c-white border-b border-c-border">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 py-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-c-headline mb-2">Каталог кемперів</h1>
+      <div className="bg-c-white border-c-border border-b">
+        <div className="mx-auto max-w-7xl px-4 py-8 md:px-8">
+          <h1 className="text-c-headline mb-2 text-3xl font-bold md:text-4xl">Каталог кемперів</h1>
           <p className="text-c-muted">Знайдіть ідеальний будинок на колесах для вашої подорожі</p>
         </div>
       </div>

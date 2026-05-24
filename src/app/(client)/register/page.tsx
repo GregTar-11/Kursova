@@ -26,18 +26,22 @@ export default function RegisterPage() {
   );
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex items-center justify-center px-4 py-12">
+    <div className="flex h-[calc(100vh-8rem)] items-center justify-center px-4 py-12">
       <div className="w-full max-w-sm">
-        <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-c-headline mb-1">Реєстрація</h1>
-          <p className="text-sm text-c-muted">Створіть обліковий запис безкоштовно</p>
+        <div className="mb-8 text-center">
+          <h1 className="text-c-headline mb-1 text-2xl font-bold">Реєстрація</h1>
+          <p className="text-c-muted text-sm">Створіть обліковий запис безкоштовно</p>
         </div>
 
-        <div className="bg-c-white border border-c-border rounded-lg overflow-hidden">
+        <div className="bg-c-white border-c-border overflow-hidden rounded-lg border">
           <Form methods={methods} onSubmit={handleSubmit} variant="full">
             <Input name="email" label="Email" type="email" placeholder="your@email.com" />
             <InputPassword name="password" label="Пароль" placeholder="••••••••" />
-            <InputPassword name="confirmPassword" label="Підтвердіть пароль" placeholder="••••••••" />
+            <InputPassword
+              name="confirmPassword"
+              label="Підтвердіть пароль"
+              placeholder="••••••••"
+            />
 
             <Button
               type="submit"
@@ -51,7 +55,7 @@ export default function RegisterPage() {
           </Form>
         </div>
 
-        <p className="text-center text-sm text-c-muted mt-6">
+        <p className="text-c-muted mt-6 text-center text-sm">
           Вже є акаунт?{' '}
           <Link href={ROUTES.LOGIN} className="text-c-accent hover:underline">
             Увійти

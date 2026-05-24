@@ -17,26 +17,26 @@ export default function AdminHeader() {
   };
 
   return (
-    <header className="bg-c-white border-b border-c-border">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 h-14 flex items-center justify-between">
+    <header className="bg-c-white border-c-border border-b">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 md:px-8">
         <nav className="flex items-center gap-6">
-          <span className="font-bold text-c-accent">Ramblers Admin</span>
+          <span className="text-c-accent font-bold">Ramblers Admin</span>
           <Link
             href={ROUTES.ADMIN}
-            className="text-sm text-c-headline hover:text-c-accent transition-colors"
+            className="text-c-headline hover:text-c-accent text-sm transition-colors"
           >
             Замовлення
           </Link>
           <Link
             href={ROUTES.ADMIN_CAMPERS}
-            className="text-sm text-c-headline hover:text-c-accent transition-colors"
+            className="text-c-headline hover:text-c-accent text-sm transition-colors"
           >
             Кемпери
           </Link>
         </nav>
 
         <div className="flex items-center gap-3">
-          <span className="text-sm text-c-muted hidden md:block">{user?.email}</span>
+          <span className="text-c-muted hidden text-sm md:block">{user?.email}</span>
           <Button variant="ghost" size="small" onClick={handleLogout}>
             Вийти
           </Button>

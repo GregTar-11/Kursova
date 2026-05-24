@@ -13,10 +13,10 @@ export default function OrdersTable() {
   if (orders.length === 0) return <OrdersTableEmpty />;
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-c-border">
+    <div className="border-c-border overflow-x-auto rounded-lg border">
       <table className="w-full text-sm">
         <OrdersTableHead />
-        <tbody className="bg-c-white divide-y divide-c-border">
+        <tbody className="bg-c-white divide-c-border divide-y">
           {orders.map((order) => (
             <OrdersTableRow key={order.id} order={order} camperNames={camperNames} />
           ))}

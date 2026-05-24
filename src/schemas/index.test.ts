@@ -11,23 +11,25 @@ describe('loginSchema', () => {
   });
 
   it('відхиляє некоректний email', async () => {
-    await expect(loginSchema.validate({ ...valid, email: 'not-email' }))
-      .rejects.toThrow('Некоректний email');
+    await expect(loginSchema.validate({ ...valid, email: 'not-email' })).rejects.toThrow(
+      'Некоректний email',
+    );
   });
 
   it('відхиляє порожній email', async () => {
-    await expect(loginSchema.validate({ ...valid, email: '' }))
-      .rejects.toThrow('Введіть email');
+    await expect(loginSchema.validate({ ...valid, email: '' })).rejects.toThrow('Введіть email');
   });
 
   it('відхиляє пароль коротше 8 символів', async () => {
-    await expect(loginSchema.validate({ ...valid, password: '123' }))
-      .rejects.toThrow('Мінімум 8 символів');
+    await expect(loginSchema.validate({ ...valid, password: '123' })).rejects.toThrow(
+      'Мінімум 8 символів',
+    );
   });
 
   it('відхиляє пароль довше 32 символів', async () => {
-    await expect(loginSchema.validate({ ...valid, password: 'a'.repeat(33) }))
-      .rejects.toThrow('Максимум 32 символів');
+    await expect(loginSchema.validate({ ...valid, password: 'a'.repeat(33) })).rejects.toThrow(
+      'Максимум 32 символів',
+    );
   });
 });
 
@@ -45,14 +47,16 @@ describe('registerSchema', () => {
   });
 
   it('відхиляє якщо паролі не збігаються', async () => {
-    await expect(registerSchema.validate({ ...valid, confirmPassword: 'other' }))
-      .rejects.toThrow('Паролі не збігаються');
+    await expect(registerSchema.validate({ ...valid, confirmPassword: 'other' })).rejects.toThrow(
+      'Паролі не збігаються',
+    );
   });
 
   it('відхиляє порожній confirmPassword', async () => {
     // '' !== password → спрацьовує oneOf раніше ніж required
-    await expect(registerSchema.validate({ ...valid, confirmPassword: '' }))
-      .rejects.toThrow('Паролі не збігаються');
+    await expect(registerSchema.validate({ ...valid, confirmPassword: '' })).rejects.toThrow(
+      'Паролі не збігаються',
+    );
   });
 });
 
@@ -73,30 +77,35 @@ describe('orderSchema', () => {
     await expect(orderSchema.validate({ ...valid, camperId: '' })).resolves.toBeTruthy();
   });
 
-  it('відхиляє ім\'я коротше 2 символів', async () => {
-    await expect(orderSchema.validate({ ...valid, clientName: 'І' }))
-      .rejects.toThrow('Мінімум 2 символи');
+  it("відхиляє ім'я коротше 2 символів", async () => {
+    await expect(orderSchema.validate({ ...valid, clientName: 'І' })).rejects.toThrow(
+      'Мінімум 2 символи',
+    );
   });
 
-  it('відхиляє порожнє ім\'я', async () => {
+  it("відхиляє порожнє ім'я", async () => {
     // ''.length < 2 → спрацьовує min() раніше ніж required()
-    await expect(orderSchema.validate({ ...valid, clientName: '' }))
-      .rejects.toThrow('Мінімум 2 символи');
+    await expect(orderSchema.validate({ ...valid, clientName: '' })).rejects.toThrow(
+      'Мінімум 2 символи',
+    );
   });
 
   it('відхиляє неправильний формат телефону', async () => {
-    await expect(orderSchema.validate({ ...valid, clientPhone: '0991234567' }))
-      .rejects.toThrow('Формат: +380XXXXXXXXX');
+    await expect(orderSchema.validate({ ...valid, clientPhone: '0991234567' })).rejects.toThrow(
+      'Формат: +380XXXXXXXXX',
+    );
   });
 
   it('відхиляє телефон без +', async () => {
-    await expect(orderSchema.validate({ ...valid, clientPhone: '380991234567' }))
-      .rejects.toThrow('Формат: +380XXXXXXXXX');
+    await expect(orderSchema.validate({ ...valid, clientPhone: '380991234567' })).rejects.toThrow(
+      'Формат: +380XXXXXXXXX',
+    );
   });
 
   it('відхиляє порожній телефон', async () => {
-    await expect(orderSchema.validate({ ...valid, clientPhone: '' }))
-      .rejects.toThrow('Введіть номер телефону');
+    await expect(orderSchema.validate({ ...valid, clientPhone: '' })).rejects.toThrow(
+      'Введіть номер телефону',
+    );
   });
 });
 
@@ -117,18 +126,21 @@ describe('camperSchema', () => {
   });
 
   it('відхиляє ціну 0', async () => {
-    await expect(camperSchema.validate({ ...valid, price: 0 }))
-      .rejects.toThrow('Ціна має бути більше 0');
+    await expect(camperSchema.validate({ ...valid, price: 0 })).rejects.toThrow(
+      'Ціна має бути більше 0',
+    );
   });
 
   it('відхиляє некоректний URL зображення', async () => {
-    await expect(camperSchema.validate({ ...valid, imageUrl: 'not-url' }))
-      .rejects.toThrow('Некоректний URL зображення');
+    await expect(camperSchema.validate({ ...valid, imageUrl: 'not-url' })).rejects.toThrow(
+      'Некоректний URL зображення',
+    );
   });
 
   it('відхиляє невідомий статус', async () => {
-    await expect(camperSchema.validate({ ...valid, status: 'unknown' }))
-      .rejects.toThrow('Виберіть статус');
+    await expect(camperSchema.validate({ ...valid, status: 'unknown' })).rejects.toThrow(
+      'Виберіть статус',
+    );
   });
 
   it('відхиляє кількість місць більше 10', async () => {
@@ -137,7 +149,7 @@ describe('camperSchema', () => {
     ).rejects.toThrow('Максимум 10');
   });
 
-  it('відхиляє об\'єм баку менше 10 л', async () => {
+  it("відхиляє об'єм баку менше 10 л", async () => {
     await expect(
       camperSchema.validate({ ...valid, features: { ...valid.features, tankVolume: 5 } }),
     ).rejects.toThrow('Мінімум 10 л');

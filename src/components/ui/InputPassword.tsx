@@ -14,12 +14,7 @@ interface InputPasswordProps {
   disabled?: boolean;
 }
 
-export const InputPassword = ({
-  label,
-  name,
-  placeholder,
-  disabled,
-}: InputPasswordProps) => {
+export const InputPassword = ({ label, name, placeholder, disabled }: InputPasswordProps) => {
   const [isShowPassword, setShowPassword] = useState(false);
 
   const {
@@ -52,10 +47,10 @@ export const InputPassword = ({
           {...register(name)}
           className={cn(
             'relative h-9 w-full rounded border py-2 pr-10 pl-3 transition-all outline-none',
-            'placeholder:text-[13px] placeholder:text-c-base',
+            'placeholder:text-c-base placeholder:text-[13px]',
             'disabled:cursor-not-allowed disabled:opacity-60',
             fieldError
-              ? 'border-c-error text-c-error focus:ring-1 focus:ring-c-error'
+              ? 'border-c-error text-c-error focus:ring-c-error focus:ring-1'
               : 'border-c-border text-c-headline focus:border-c-accent',
           )}
         />
@@ -69,9 +64,7 @@ export const InputPassword = ({
         </button>
 
         {typeof fieldError?.message === 'string' && (
-          <ErrorMessage className="top-10">
-            {fieldError.message}
-          </ErrorMessage>
+          <ErrorMessage className="top-10">{fieldError.message}</ErrorMessage>
         )}
       </div>
     </div>

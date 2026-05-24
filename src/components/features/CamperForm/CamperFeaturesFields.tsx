@@ -1,9 +1,9 @@
-import { Input } from "@/components/ui/Input";
+import { Input } from '@/components/ui/Input';
 
 export default function CamperFeaturesFields() {
   return (
-    <div className="border-t border-c-border pt-4">
-      <p className="text-[13px] font-semibold text-c-muted uppercase tracking-wide mb-3">
+    <div className="border-c-border border-t pt-4">
+      <p className="text-c-muted mb-3 text-[13px] font-semibold tracking-wide uppercase">
         Характеристики
       </p>
       <div className="flex flex-col gap-4">

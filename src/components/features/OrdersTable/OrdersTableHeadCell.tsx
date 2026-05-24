@@ -4,8 +4,6 @@ interface OrdersTableHeadCellProps {
 
 export default function OrdersTableHeadCell({ label }: OrdersTableHeadCellProps) {
   return (
-    <th className="text-left px-4 py-3 font-semibold text-c-muted whitespace-nowrap">
-      {label}
-    </th>
+    <th className="text-c-muted px-4 py-3 text-left font-semibold whitespace-nowrap">{label}</th>
   );
 }

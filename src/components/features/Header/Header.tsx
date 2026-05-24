@@ -24,9 +24,12 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-c-white border-b border-c-border sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between gap-6">
-        <Link href={ROUTES.HOME} className="text-xl font-bold text-c-accent tracking-tight shrink-0">
+    <header className="bg-c-white border-c-border sticky top-0 z-50 border-b">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-6 px-4 md:px-8">
+        <Link
+          href={ROUTES.HOME}
+          className="text-c-accent shrink-0 text-xl font-bold tracking-tight"
+        >
           Ramblers
         </Link>
 
@@ -49,10 +52,10 @@ export default function Header() {
 
         {/* Auth section */}
         {!loading && (
-          <div className="flex items-center gap-3 ml-auto">
+          <div className="ml-auto flex items-center gap-3">
             {user ? (
               <>
-                <span className="text-sm text-c-muted hidden md:block truncate max-w-[160px]">
+                <span className="text-c-muted hidden max-w-[160px] truncate text-sm md:block">
                   {user.email}
                 </span>
                 <Button variant="ghost" size="small" onClick={handleLogout}>

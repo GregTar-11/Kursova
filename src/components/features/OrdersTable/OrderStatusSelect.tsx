@@ -26,10 +26,12 @@ export default function OrderStatusSelect({ orderId, currentStatus }: OrderStatu
       onChange={(e) => {
         if (isOrderStatus(e.target.value)) handleStatusChange(orderId, e.target.value);
       }}
-      className="text-xs border border-c-border rounded px-2 py-1 text-c-headline outline-none focus:border-c-accent transition-colors cursor-pointer bg-c-white"
+      className="border-c-border text-c-headline focus:border-c-accent bg-c-white cursor-pointer rounded border px-2 py-1 text-xs transition-colors outline-none"
     >
       {STATUS_OPTIONS.map(([value, label]) => (
-        <option key={value} value={value}>{label}</option>
+        <option key={value} value={value}>
+          {label}
+        </option>
       ))}
     </select>
   );

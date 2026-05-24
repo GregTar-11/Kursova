@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useFormContext } from "react-hook-form";
-import { CAMPER_STATUS_LABELS } from "@/constant/regular";
-import { ICamperData } from "@/schemas";
-import { cn } from "@/helpers/cn";
+import { useFormContext } from 'react-hook-form';
+import { CAMPER_STATUS_LABELS } from '@/constant/regular';
+import { ICamperData } from '@/schemas';
+import { cn } from '@/helpers/cn';
 
 const STATUS_OPTIONS = Object.entries(CAMPER_STATUS_LABELS);
 
@@ -16,16 +16,16 @@ export default function CamperStatusSelect() {
 
   return (
     <div className="flex flex-col gap-2 text-[13px]">
-      <label className={cn("font-medium", error ? "text-c-error" : "text-c-headline")}>
+      <label className={cn('font-medium', error ? 'text-c-error' : 'text-c-headline')}>
         Статус
       </label>
       <select
-        {...register("status")}
+        {...register('status')}
         className={cn(
-          "h-9 w-full rounded border px-3 text-[13px] outline-none transition-all bg-c-white",
+          'bg-c-white h-9 w-full rounded border px-3 text-[13px] transition-all outline-none',
           error
-            ? "border-c-error text-c-error focus:ring-1 focus:ring-c-error"
-            : "border-c-border text-c-headline focus:border-c-accent",
+            ? 'border-c-error text-c-error focus:ring-c-error focus:ring-1'
+            : 'border-c-border text-c-headline focus:border-c-accent',
         )}
       >
         {STATUS_OPTIONS.map(([value, label]) => (

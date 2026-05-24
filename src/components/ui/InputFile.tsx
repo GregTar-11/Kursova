@@ -55,9 +55,7 @@ export const InputFile = ({
           isDocument: !file.type.startsWith('image/'),
         }));
 
-        setLocalFiles((prev) =>
-          multiple ? [...prev, ...newPreviews] : newPreviews,
-        );
+        setLocalFiles((prev) => (multiple ? [...prev, ...newPreviews] : newPreviews));
 
         const uploadPromises = filesToProcess.map((file) =>
           uploadFileService.uploadFileToCloudinary(file),
@@ -71,7 +69,7 @@ export const InputFile = ({
             }
           })
           .catch((err) => {
-            notifier.error("Помилка 1");
+            notifier.error('Помилка 1');
             reset();
           })
           .finally(() => {
@@ -80,7 +78,7 @@ export const InputFile = ({
           });
       })
       .catch((err) => {
-        notifier.error("Помилка");
+        notifier.error('Помилка');
         if (inputRef.current) inputRef.current.value = '';
       });
   };
@@ -116,9 +114,7 @@ export const InputFile = ({
       return (
         <div
           className={cn(
-            isUploading && variant !== 'avatar'
-              ? 'pointer-events-none opacity-60'
-              : '',
+            isUploading && variant !== 'avatar' ? 'pointer-events-none opacity-60' : '',
           )}
         >
           <div
@@ -146,23 +142,17 @@ export const InputFile = ({
     } else if (variant === 'field') {
       return (
         <div className="flex w-full flex-col gap-2">
-          {label && (
-            <label className="text-c-headline text-[13px] font-medium">
-              {label}
-            </label>
-          )}
+          {label && <label className="text-c-headline text-[13px] font-medium">{label}</label>}
           <div className="flex w-full gap-5">
             <div
               onClick={() => inputRef.current?.click()}
               className="border-c-border bg-c-white flex h-9 w-full cursor-pointer items-center overflow-hidden rounded-md border"
             >
               <div className="bg-c-bg text-c-base border-c-border flex h-full items-center border-r px-3 py-1.75 text-[13px] font-medium whitespace-nowrap">
-                {"Текст"}
+                {'Текст'}
               </div>
               <div className="text-c-headline flex-1 truncate px-3 text-[13px]">
-                {initialPreviews?.length > 0
-                  ? 'Saved files'
-                  : "Текст"}
+                {initialPreviews?.length > 0 ? 'Saved files' : 'Текст'}
               </div>
               {initialPreviews?.length > 0 && (
                 <button
@@ -195,16 +185,14 @@ export const InputFile = ({
             className={cn(
               'border-c-divider hover:bg-c-bg/50 flex h-[120px] w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-white p-6 transition-colors',
               isUploading && 'pointer-events-none opacity-50',
-              isDragging && 'border-blue-500 bg-blue-50'
+              isDragging && 'border-blue-500 bg-blue-50',
             )}
           >
             <div className="text-c-base mb-3 scale-[1.5]">
               <Add />
             </div>
             <p className="text-c-headline text-[15px] font-medium">
-              {isUploading
-                ? "Текст"
-                : 'Drop files here or click to upload.'}
+              {isUploading ? 'Текст' : 'Drop files here or click to upload.'}
             </p>
           </div>
           {localFiles.length > 0 && (
@@ -219,11 +207,7 @@ export const InputFile = ({
                       DOC
                     </div>
                   ) : (
-                    <img
-                      src={file.url}
-                      alt="preview"
-                      className="h-10 w-10 rounded object-cover"
-                    />
+                    <img src={file.url} alt="preview" className="h-10 w-10 rounded object-cover" />
                   )}
                   <span className="flex-1 truncate text-sm font-medium text-gray-700">
                     {file.name}

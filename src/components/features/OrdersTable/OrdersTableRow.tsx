@@ -11,19 +11,13 @@ interface OrdersTableRowProps {
 export default function OrdersTableRow({ order, camperNames }: OrdersTableRowProps) {
   return (
     <tr className="hover:bg-c-bg transition-colors">
-      <td className="px-4 py-3 text-c-muted whitespace-nowrap">
-        {formatDate(order.createdAt)}
-      </td>
-      <td className="px-4 py-3 text-c-headline font-medium whitespace-nowrap">
+      <td className="text-c-muted px-4 py-3 whitespace-nowrap">{formatDate(order.createdAt)}</td>
+      <td className="text-c-headline px-4 py-3 font-medium whitespace-nowrap">
         {order.clientName}
       </td>
-      <td className="px-4 py-3 text-c-muted whitespace-nowrap">
-        {order.clientPhone}
-      </td>
-      <td className="px-4 py-3 text-c-headline whitespace-nowrap">
-        {camperNames[order.camperId] || (
-          <span className="text-c-base italic">Загальна заявка</span>
-        )}
+      <td className="text-c-muted px-4 py-3 whitespace-nowrap">{order.clientPhone}</td>
+      <td className="text-c-headline px-4 py-3 whitespace-nowrap">
+        {camperNames[order.camperId] || <span className="text-c-base italic">Загальна заявка</span>}
       </td>
       <td className="px-4 py-3">
         <div className="flex items-center gap-3">

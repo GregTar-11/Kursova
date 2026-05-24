@@ -41,7 +41,7 @@ export const ToastMessage = ({ t, message, type }: ToastMessageProps) => {
     <div
       className={cn(
         'flex w-full max-w-xs items-center gap-3 rounded-lg border-2 px-4 py-3 text-sm shadow-md transition-all duration-300',
-        t.visible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2',
+        t.visible ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0',
         TYPE_STYLES[type],
       )}
       onClick={() => toast.dismiss(t.id)}
@@ -50,7 +50,7 @@ export const ToastMessage = ({ t, message, type }: ToastMessageProps) => {
 
       <div className="grow leading-normal font-medium">{message}</div>
 
-      <Button variant="ghost" onClick={handleDismiss} className="h-auto p-0 shrink-0">
+      <Button variant="ghost" onClick={handleDismiss} className="h-auto shrink-0 p-0">
         <CloseIcon width={16} height={16} />
       </Button>
     </div>

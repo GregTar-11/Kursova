@@ -1,26 +1,26 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme inline {
   /* Ramblers brand */
-  --color-c-accent: #E8873A;
-  --color-c-accent-dark: #C96B20;
-  --color-c-accent-light: #F5A96B;
-  --color-c-secondary: #2D5A27;
-  --color-c-secondary-dark: #1E3F1A;
+  --color-c-accent: #e8873a;
+  --color-c-accent-dark: #c96b20;
+  --color-c-accent-light: #f5a96b;
+  --color-c-secondary: #2d5a27;
+  --color-c-secondary-dark: #1e3f1a;
 
   /* Neutrals */
-  --color-c-bg: #FAFAF8;
-  --color-c-white: #FFFFFF;
-  --color-c-headline: #1A1A1A;
-  --color-c-muted: #6B7280;
-  --color-c-base: #9CA3AF;
-  --color-c-border: #E5E1D8;
+  --color-c-bg: #fafaf8;
+  --color-c-white: #ffffff;
+  --color-c-headline: #1a1a1a;
+  --color-c-muted: #6b7280;
+  --color-c-base: #9ca3af;
+  --color-c-border: #e5e1d8;
 
   /* Status */
-  --color-c-error: #EF4444;
-  --color-c-success: #22C55E;
-  --color-c-warning: #F59E0B;
-  --color-c-danger: #EF4444;
+  --color-c-error: #ef4444;
+  --color-c-success: #22c55e;
+  --color-c-warning: #f59e0b;
+  --color-c-danger: #ef4444;
 
   /* Font */
   --font-sans: var(--font-inter);
@@ -32,8 +32,8 @@
 }
 
 :root {
-  --background: #FAFAF8;
-  --foreground: #1A1A1A;
+  --background: #fafaf8;
+  --foreground: #1a1a1a;
 }
 
 * {

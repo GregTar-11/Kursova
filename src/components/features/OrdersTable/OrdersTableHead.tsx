@@ -5,7 +5,7 @@ const COLUMNS = ['Дата', 'Клієнт', 'Телефон', 'Кемпер', '
 export default function OrdersTableHead() {
   return (
     <thead>
-      <tr className="bg-c-bg border-b border-c-border">
+      <tr className="bg-c-bg border-c-border border-b">
         {COLUMNS.map((col) => (
           <OrdersTableHeadCell key={col} label={col} />
         ))}

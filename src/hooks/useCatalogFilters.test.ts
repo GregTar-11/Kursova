@@ -16,7 +16,7 @@ const makeCamper = (overrides: Partial<Camper>): Camper => ({
 
 const CAMPERS: Camper[] = [
   makeCamper({ id: '1', name: 'Alpha', price: 1000, status: 'available' }),
-  makeCamper({ id: '2', name: 'Beta',  price: 2000, status: 'booked'    }),
+  makeCamper({ id: '2', name: 'Beta', price: 2000, status: 'booked' }),
   makeCamper({ id: '3', name: 'Gamma', price: 3000, status: 'available' }),
 ];
 
@@ -61,7 +61,10 @@ describe('useCatalogFilters', () => {
 
   it('комбінує фільтри статусу та ціни', () => {
     const { result } = renderHook(() => useCatalogFilters(CAMPERS));
-    act(() => { result.current.setStatus('available'); result.current.setPrice('priceMin', '2000'); });
+    act(() => {
+      result.current.setStatus('available');
+      result.current.setPrice('priceMin', '2000');
+    });
     expect(result.current.filtered).toHaveLength(1);
     expect(result.current.filtered[0].id).toBe('3');
   });
@@ -92,7 +95,10 @@ describe('useCatalogFilters', () => {
 
   it('resetFilters повертає початковий стан', () => {
     const { result } = renderHook(() => useCatalogFilters(CAMPERS));
-    act(() => { result.current.setStatus('booked'); result.current.setPrice('priceMin', '1500'); });
+    act(() => {
+      result.current.setStatus('booked');
+      result.current.setPrice('priceMin', '1500');
+    });
     act(() => result.current.resetFilters());
     expect(result.current.filtered).toHaveLength(3);
     expect(result.current.hasActiveFilters).toBe(false);

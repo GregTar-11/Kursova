@@ -20,7 +20,7 @@ export const Button = ({
       'inline-flex cursor-pointer items-center justify-center gap-2 rounded-md font-medium whitespace-nowrap transition-colors disabled:cursor-not-allowed disabled:opacity-50',
       {
         primary: 'bg-c-accent text-c-white hover:bg-c-accent-dark',
-        outline: 'border border-c-accent text-c-accent hover:bg-c-accent/10',
+        outline: 'border-c-accent text-c-accent hover:bg-c-accent/10 border',
         ghost: 'text-c-headline bg-transparent hover:opacity-70',
         error: 'bg-c-error text-c-white hover:bg-c-error/80',
       }[variant],

@@ -6,8 +6,4 @@ export const renderCustomToast = (
   message: ReactNode,
   type: ToastType,
   options?: DefaultToastOptions,
-) =>
-  toast.custom(
-    (t) => <ToastMessage t={t} message={message} type={type} />,
-    options,
-  );
+) => toast.custom((t) => <ToastMessage t={t} message={message} type={type} />, options);

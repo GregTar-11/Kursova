@@ -20,7 +20,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
   const { id, name, price, features, imageUrl, status } = camper;
 
   return (
-    <article className="flex flex-col bg-c-white border border-c-border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
+    <article className="bg-c-white border-c-border flex flex-col overflow-hidden rounded-lg border transition-shadow hover:shadow-md">
       <div className="relative aspect-[4/3] w-full">
         <Image
           src={imageUrl || '/placeholder-camper.jpg'}
@@ -31,7 +31,7 @@ export default function CamperCard({ camper }: CamperCardProps) {
         />
         <span
           className={cn(
-            'absolute top-3 left-3 px-2 py-0.5 rounded-sm text-xs font-medium',
+            'absolute top-3 left-3 rounded-sm px-2 py-0.5 text-xs font-medium',
             STATUS_STYLE[status],
           )}
         >
@@ -39,18 +39,17 @@ export default function CamperCard({ camper }: CamperCardProps) {
         </span>
       </div>
 
-      <div className="flex flex-col flex-1 p-4 gap-3">
-        <h3 className="font-bold text-c-headline text-base leading-snug">{name}</h3>
+      <div className="flex flex-1 flex-col gap-3 p-4">
+        <h3 className="text-c-headline text-base leading-snug font-bold">{name}</h3>
 
-        <ul className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-c-muted">
+        <ul className="text-c-muted flex flex-wrap gap-x-3 gap-y-1 text-sm">
           <li>{features.engine}</li>
-          <li className="before:content-['·'] before:mr-3">{features.beds} ліжка</li>
-          <li className="before:content-['·'] before:mr-3">{features.tankVolume} л бак</li>
+          <li className="before:mr-3 before:content-['·']">{features.beds} ліжка</li>
+          <li className="before:mr-3 before:content-['·']">{features.tankVolume} л бак</li>
         </ul>
 
-        <p className="text-c-headline font-semibold mt-auto">
-          {formatPrice(price)}{' '}
-          <span className="text-sm font-normal text-c-muted">₴ / доба</span>
+        <p className="text-c-headline mt-auto font-semibold">
+          {formatPrice(price)} <span className="text-c-muted text-sm font-normal">₴ / доба</span>
         </p>
 
         <Link href={ROUTES.CAMPER(id)} className="w-full">

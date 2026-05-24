@@ -8,11 +8,7 @@ import {
 } from '@/constant/regular';
 
 export const loginSchema = yup.object({
-  email: yup
-    .string()
-    .trim()
-    .email('Некоректний email')
-    .required('Введіть email'),
+  email: yup.string().trim().email('Некоректний email').required('Введіть email'),
   password: yup
     .string()
     .min(AUTH_CONFIG.PASSWORD.MIN, `Мінімум ${AUTH_CONFIG.PASSWORD.MIN} символів`)
@@ -23,11 +19,7 @@ export const loginSchema = yup.object({
 export type ILoginData = yup.InferType<typeof loginSchema>;
 
 export const registerSchema = yup.object({
-  email: yup
-    .string()
-    .trim()
-    .email('Некоректний email')
-    .required('Введіть email'),
+  email: yup.string().trim().email('Некоректний email').required('Введіть email'),
   password: yup
     .string()
     .min(AUTH_CONFIG.PASSWORD.MIN, `Мінімум ${AUTH_CONFIG.PASSWORD.MIN} символів`)
@@ -76,10 +68,7 @@ export const camperSchema = yup.object({
     .min(STRING_CONFIG.MIN_DESCRIPTION, `Мінімум ${STRING_CONFIG.MIN_DESCRIPTION} символів`)
     .max(STRING_CONFIG.MAX_DESCRIPTION, `Максимум ${STRING_CONFIG.MAX_DESCRIPTION} символів`)
     .required('Введіть опис'),
-  imageUrl: yup
-    .string()
-    .url('Некоректний URL зображення')
-    .required('Введіть URL зображення'),
+  imageUrl: yup.string().url('Некоректний URL зображення').required('Введіть URL зображення'),
   status: yup
     .string()
     .oneOf(['available', 'booked'], 'Виберіть статус')

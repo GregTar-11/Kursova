@@ -22,7 +22,7 @@ export const Form = <T extends FieldValues>({
     <form
       onSubmit={onSubmit}
       className={cn(
-        'flex w-full flex-col text-left gap-6 bg-c-white rounded-xl transition-all',
+        'bg-c-white flex w-full flex-col gap-6 rounded-xl text-left transition-all',
         {
           big: 'max-w-120 p-10',
           small: 'max-w-101 p-6',

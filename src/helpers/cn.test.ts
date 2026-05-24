@@ -6,7 +6,7 @@ describe('cn', () => {
     expect(cn()).toBe('');
   });
 
-  it('об\'єднує кілька класів', () => {
+  it("об'єднує кілька класів", () => {
     expect(cn('a', 'b', 'c')).toBe('a b c');
   });
 
@@ -14,7 +14,7 @@ describe('cn', () => {
     expect(cn('a', false, undefined, null, 'b')).toBe('a b');
   });
 
-  it('підтримує умовні об\'єкти', () => {
+  it("підтримує умовні об'єкти", () => {
     expect(cn({ active: true, hidden: false })).toBe('active');
   });
 

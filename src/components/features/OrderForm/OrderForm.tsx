@@ -16,7 +16,7 @@ export default function OrderForm({ camperId = '' }: OrderFormProps) {
   const { handleSubmit, methods, isSubmitting, isDirty } = useFormCustom<IOrderData>(
     async (data) => {
       await OrderService.create(data);
-      notifier.success('Замовлення прийнято! Ми зв\'яжемося з вами найближчим часом.');
+      notifier.success("Замовлення прийнято! Ми зв'яжемося з вами найближчим часом.");
     },
     orderSchema,
     { camperId, clientName: '', clientPhone: '' },
@@ -26,18 +26,9 @@ export default function OrderForm({ camperId = '' }: OrderFormProps) {
     <Form methods={methods} onSubmit={handleSubmit} variant="full">
       <input type="hidden" {...methods.register('camperId')} />
 
-      <Input
-        name="clientName"
-        label="Ваше ім'я"
-        placeholder="Іван Петренко"
-      />
+      <Input name="clientName" label="Ваше ім'я" placeholder="Іван Петренко" />
 
-      <Input
-        name="clientPhone"
-        label="Номер телефону"
-        placeholder="+380XXXXXXXXX"
-        type="tel"
-      />
+      <Input name="clientPhone" label="Номер телефону" placeholder="+380XXXXXXXXX" type="tel" />
 
       <Button
         type="submit"

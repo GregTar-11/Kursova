@@ -21,18 +21,18 @@ export default function CatalogContent({ campers }: CatalogContentProps) {
     useCatalogFilters(campers);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-8 py-10">
+    <div className="mx-auto max-w-7xl px-4 py-10 md:px-8">
       {/* Filters */}
-      <div className="bg-c-white border border-c-border rounded-lg p-5 mb-8 flex flex-col md:flex-row md:items-end gap-5">
+      <div className="bg-c-white border-c-border mb-8 flex flex-col gap-5 rounded-lg border p-5 md:flex-row md:items-end">
         <div className="flex-1">
-          <p className="text-sm text-c-muted mb-2">Статус</p>
-          <div className="flex gap-2 flex-wrap">
+          <p className="text-c-muted mb-2 text-sm">Статус</p>
+          <div className="flex flex-wrap gap-2">
             {STATUS_TABS.map(({ value, label }) => (
               <button
                 key={value}
                 onClick={() => setStatus(value)}
                 className={cn(
-                  'px-4 py-1.5 rounded-md text-sm font-medium border transition-colors cursor-pointer',
+                  'cursor-pointer rounded-md border px-4 py-1.5 text-sm font-medium transition-colors',
                   filters.status === value
                     ? 'bg-c-accent border-c-accent text-c-white'
                     : 'border-c-border text-c-headline hover:border-c-accent hover:text-c-accent',
@@ -46,25 +46,25 @@ export default function CatalogContent({ campers }: CatalogContentProps) {
 
         <div className="flex items-end gap-3">
           <div>
-            <p className="text-sm text-c-muted mb-2">Ціна від, ₴</p>
+            <p className="text-c-muted mb-2 text-sm">Ціна від, ₴</p>
             <input
               type="text"
               inputMode="numeric"
               value={filters.priceMin}
               onChange={(e) => setPrice('priceMin', e.target.value)}
               placeholder="0"
-              className="w-28 h-9 rounded border border-c-border px-3 text-sm text-c-headline placeholder:text-c-base outline-none focus:border-c-accent transition-colors"
+              className="border-c-border text-c-headline placeholder:text-c-base focus:border-c-accent h-9 w-28 rounded border px-3 text-sm transition-colors outline-none"
             />
           </div>
           <div>
-            <p className="text-sm text-c-muted mb-2">до, ₴</p>
+            <p className="text-c-muted mb-2 text-sm">до, ₴</p>
             <input
               type="text"
               inputMode="numeric"
               value={filters.priceMax}
               onChange={(e) => setPrice('priceMax', e.target.value)}
               placeholder="∞"
-              className="w-28 h-9 rounded border border-c-border px-3 text-sm text-c-headline placeholder:text-c-base outline-none focus:border-c-accent transition-colors"
+              className="border-c-border text-c-headline placeholder:text-c-base focus:border-c-accent h-9 w-28 rounded border px-3 text-sm transition-colors outline-none"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function CatalogContent({ campers }: CatalogContentProps) {
         {hasActiveFilters && (
           <button
             onClick={resetFilters}
-            className="text-sm text-c-muted hover:text-c-error transition-colors cursor-pointer whitespace-nowrap"
+            className="text-c-muted hover:text-c-error cursor-pointer text-sm whitespace-nowrap transition-colors"
           >
             Скинути фільтри
           </button>
@@ -80,21 +80,21 @@ export default function CatalogContent({ campers }: CatalogContentProps) {
       </div>
 
       {/* Results count */}
-      <p className="text-sm text-c-muted mb-6">
-        Знайдено: <span className="font-semibold text-c-headline">{filtered.length}</span> кемперів
+      <p className="text-c-muted mb-6 text-sm">
+        Знайдено: <span className="text-c-headline font-semibold">{filtered.length}</span> кемперів
       </p>
 
       {/* Grid */}
       {filtered.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {filtered.map((camper) => (
             <CamperCard key={camper.id} camper={camper} />
           ))}
         </div>
       ) : (
         <div className="py-20 text-center">
-          <p className="text-c-muted text-lg mb-2">Кемперів не знайдено</p>
-          <p className="text-sm text-c-base">Спробуйте змінити фільтри</p>
+          <p className="text-c-muted mb-2 text-lg">Кемперів не знайдено</p>
+          <p className="text-c-base text-sm">Спробуйте змінити фільтри</p>
         </div>
       )}
     </div>

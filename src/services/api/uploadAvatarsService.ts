@@ -1,7 +1,4 @@
-import {
-  UploadFileRequestBody,
-  UploadFileResponse,
-} from '@/types/cloudinary';
+import { UploadFileRequestBody, UploadFileResponse } from '@/types/cloudinary';
 
 const CLOUD_NAME = process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || '';
 const UPLOAD_PRESET = process.env.NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET || '';
@@ -23,13 +20,10 @@ class FileService {
     formData.append('file', file);
     formData.append('upload_preset', this.uploadPreset ?? '');
 
-    const response = await fetch(
-      `${this.apiUrl}${this.cloudName}/auto/upload`,
-      {
-        method: 'POST',
-        body: formData,
-      },
-    );
+    const response = await fetch(`${this.apiUrl}${this.cloudName}/auto/upload`, {
+      method: 'POST',
+      body: formData,
+    });
     const data: UploadFileResponse = await response.json();
     return data;
   };

@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button";
+import { Button } from '@/components/ui/Button';
 
 interface CamperFormActionsProps {
   isEdit: boolean;
@@ -22,7 +22,7 @@ export default function CamperFormActions({
         disabled={!isDirty || isSubmitting}
         className="flex-1"
       >
-        {isSubmitting ? "Збереження..." : isEdit ? "Зберегти зміни" : "Додати кемпер"}
+        {isSubmitting ? 'Збереження...' : isEdit ? 'Зберегти зміни' : 'Додати кемпер'}
       </Button>
       {onCancel && (
         <Button type="button" variant="ghost" size="medium" onClick={onCancel}>

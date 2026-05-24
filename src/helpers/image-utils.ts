@@ -1,7 +1,5 @@
-
-export const getImageDimensions = (
-  file: File,
-): Promise<{ width: number; height: number }> => new Promise((resolve, reject) => {
+export const getImageDimensions = (file: File): Promise<{ width: number; height: number }> =>
+  new Promise((resolve, reject) => {
     const img = new Image();
 
     const objectUrl = URL.createObjectURL(file);
