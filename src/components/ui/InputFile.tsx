@@ -71,7 +71,7 @@ export const InputFile = ({
             }
           })
           .catch((err) => {
-            notifier.error(err);
+            notifier.error("Помилка 1");
             reset();
           })
           .finally(() => {
@@ -80,7 +80,7 @@ export const InputFile = ({
           });
       })
       .catch((err) => {
-        notifier.error(err);
+        notifier.error("Помилка");
         if (inputRef.current) inputRef.current.value = '';
       });
   };
