@@ -12,6 +12,7 @@ import { Form } from '@/components/ui/Form';
 import { Input } from '@/components/ui/Input';
 import { InputPassword } from '@/components/ui/InputPassword';
 import { Button } from '@/components/ui/Button';
+import PageLoader from '@/components/ui/PageLoader';
 
 export default function AdminRegisterPage() {
   const { user, loading } = useAuth();
@@ -32,21 +33,9 @@ export default function AdminRegisterPage() {
     { email: '', password: '' },
   );
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-c-bg flex items-center justify-center">
-        <p className="text-c-muted text-sm">Завантаження...</p>
-      </div>
-    );
-  }
+  if (loading) return <PageLoader message="Завантаження..." />;
 
-  if (user?.role === 'admin') {
-    return (
-      <div className="min-h-screen bg-c-bg flex items-center justify-center">
-        <p className="text-c-muted text-sm">Перенаправлення...</p>
-      </div>
-    );
-  }
+  if (user?.role === 'admin') return <PageLoader message="Перенаправлення..." />;
 
   return (
     <div className="min-h-screen bg-c-bg flex items-center justify-center px-4">
