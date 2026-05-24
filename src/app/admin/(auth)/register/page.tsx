@@ -38,7 +38,7 @@ export default function AdminRegisterPage() {
   if (user?.role === 'admin') return <PageLoader message="Перенаправлення..." />;
 
   return (
-    <div className="min-h-screen bg-c-bg flex items-center justify-center px-4">
+    <div className="h-screen bg-c-bg flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-c-headline mb-1">Ramblers</h1>

@@ -22,7 +22,7 @@ export default function AdminProtectedLayout({ children }: { children: React.Rea
   if (!user || user.role !== 'admin') return <PageLoader message="Перенаправлення..." />;
 
   return (
-    <div className="min-h-screen flex flex-col bg-c-bg">
+    <div className="h-screen flex flex-col bg-c-bg">
       <AdminHeader />
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 md:px-8 py-8">

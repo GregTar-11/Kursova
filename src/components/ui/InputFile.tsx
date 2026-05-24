@@ -193,7 +193,7 @@ export const InputFile = ({
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
             className={cn(
-              'border-c-divider hover:bg-c-bg/50 flex min-h-[120px] w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-white p-6 transition-colors',
+              'border-c-divider hover:bg-c-bg/50 flex h-[120px] w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed bg-white p-6 transition-colors',
               isUploading && 'pointer-events-none opacity-50',
               isDragging && 'border-blue-500 bg-blue-50'
             )}
