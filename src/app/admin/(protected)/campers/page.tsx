@@ -73,8 +73,8 @@ export default function AdminCampersPage() {
                 )}
               >
                 <div className="bg-c-border relative h-12 w-16 shrink-0 overflow-hidden rounded">
-                  {camper.imageUrl && (
-                    <Image src={camper.imageUrl} alt={camper.name} fill className="object-cover" />
+                  {camper.images && (
+                    <Image src={camper.images[0]} alt={camper.name} fill className="object-cover" />
                   )}
                 </div>
 
